@@ -431,7 +431,7 @@ export default function Home() {
             onBack={() => setRightIsSearchOpen(false)}
             highlightQuickRecall={rightShowQuickRecallHighlight}
             showKeyboard={activeCase === 3 ? demoStep >= 4 : demoStep >= 4}
-            searchText={activeCase === 3 ? (demoStep >= 5 ? (activeCase === 1 ? 'dinner' : activeCase === 2 ? 'hotel' : 'boarding') : '') : (demoStep >= 4 ? (activeCase === 1 ? 'dinner' : activeCase === 2 ? 'hotel' : 'boarding') : '')}
+            searchText={activeCase === 3 ? (demoStep >= 5 ? 'boarding' : '') : (demoStep >= 4 ? (activeCase === 1 ? 'dinner' : activeCase === 2 ? 'hotel' : 'boarding') : '')}
             useNormalSearch={false}
             activeCase={activeCase}
             showLongPressHighlight={rightShowLongPressHighlight}
