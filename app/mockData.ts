@@ -11,6 +11,10 @@ export interface Message {
   timestamp: Date;
   isSent: boolean;
   status?: 'sent' | 'delivered' | 'read';
+  type?: 'text' | 'document' | 'location' | 'draft';
+  documentName?: string;
+  locationName?: string;
+  locationAddress?: string;
 }
 
 export interface Chat {
@@ -23,6 +27,79 @@ export interface Chat {
 }
 
 export const mockChats: Chat[] = [
+  {
+    id: '0',
+    contact: {
+      id: '0',
+      name: 'Message Yourself (you)',
+      avatar: '#128C7E',
+      status: 'Message yourself'
+    },
+    lastMessage: 'Draft: Meeting with team tomorrow...',
+    lastMessageTime: new Date(Date.now() - 2 * 60 * 1000), // 2 minutes ago
+    unreadCount: 0,
+    messages: [
+      {
+        id: '0',
+        text: '📄 boarding_pass.pdf',
+        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
+        isSent: true,
+        status: 'read',
+        type: 'document',
+        documentName: 'boarding_pass.pdf'
+      },
+      {
+        id: '1',
+        text: '📄 License.pdf',
+        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
+        isSent: true,
+        status: 'read',
+        type: 'document',
+        documentName: 'License.pdf'
+      },
+      {
+        id: '2',
+        text: '📄 unit1.pdf',
+        timestamp: new Date(Date.now() - 2.5 * 60 * 60 * 1000),
+        isSent: true,
+        status: 'read',
+        type: 'document',
+        documentName: 'unit1.pdf'
+      },
+      {
+        id: '3',
+        text: '✅ To-Do:\n• Buy groceries\n• Call dentist\n• Finish project proposal\n• Review code changes',
+        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+        isSent: true,
+        status: 'read'
+      },
+      {
+        id: '4',
+        text: '📍 The Italian Corner',
+        timestamp: new Date(Date.now() - 1.5 * 60 * 60 * 1000),
+        isSent: true,
+        status: 'read',
+        type: 'location',
+        locationName: 'The Italian Corner',
+        locationAddress: '123 Main Street, Downtown'
+      },
+      {
+        id: '5',
+        text: 'Don\'t forget to prepare slides for tomorrow\'s presentation',
+        timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000),
+        isSent: true,
+        status: 'read'
+      },
+      {
+        id: '6',
+        text: 'Draft: Meeting with team tomorrow at 2pm. Need to discuss the new feature requirements and timeline.',
+        timestamp: new Date(Date.now() - 2 * 60 * 1000),
+        isSent: true,
+        status: 'sent',
+        type: 'draft'
+      }
+    ]
+  },
   {
     id: '1',
     contact: {
@@ -103,6 +180,15 @@ export const mockChats: Chat[] = [
         timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000),
         isSent: true,
         status: 'read'
+      },
+      {
+        id: '2.5',
+        text: '📄 sarah_boarding.pdf',
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+        isSent: false,
+        status: 'read',
+        type: 'document',
+        documentName: 'sarah_boarding.pdf'
       },
       {
         id: '3',

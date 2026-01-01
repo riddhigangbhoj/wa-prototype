@@ -14,8 +14,8 @@ export default function PhoneFrame({ children }: PhoneFrameProps) {
   });
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 p-8">
-      <div className="relative">
+    <div className="flex items-center justify-center">
+      <div className="relative" style={{ transform: 'scale(0.8)', transformOrigin: 'center' }}>
         {/* Phone Frame */}
         <div className="relative w-[375px] h-[812px] bg-black rounded-[50px] shadow-2xl overflow-hidden border-[8px] border-black">
           {/* Screen */}

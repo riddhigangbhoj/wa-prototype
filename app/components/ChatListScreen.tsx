@@ -22,6 +22,8 @@ import { format, isToday, isYesterday } from 'date-fns';
 interface ChatListScreenProps {
   chats: Chat[];
   onSelectChat: (chatId: string) => void;
+  onSearchClick: () => void;
+  highlightSearch?: boolean;
 }
 
 interface FilterOption {
@@ -29,7 +31,7 @@ interface FilterOption {
   label: string;
 }
 
-export default function ChatListScreen({ chats, onSelectChat }: ChatListScreenProps) {
+export default function ChatListScreen({ chats, onSelectChat, onSearchClick, highlightSearch = false }: ChatListScreenProps) {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   const filterOptions: FilterOption[] = [
@@ -69,13 +71,18 @@ export default function ChatListScreen({ chats, onSelectChat }: ChatListScreenPr
         <h1 className="text-[32px] font-bold text-black leading-tight mb-3 tracking-wide">Chats</h1>
 
         {/* Search Bar */}
-        <div className="bg-[#F3F4F6] rounded-[10px] px-3 py-2 flex items-center gap-2 mb-4">
+        <div
+          onClick={onSearchClick}
+          className={`bg-[#F3F4F6] rounded-[10px] px-3 py-2 flex items-center gap-2 mb-4 cursor-pointer transition-all ${
+            highlightSearch
+              ? 'ring-4 ring-[#25D366] ring-opacity-50 animate-pulse shadow-lg shadow-[#25D366]/30'
+              : 'hover:bg-[#E8E9EB]'
+          }`}
+        >
           <MagnifyingGlass size={18} className="text-[#8E8E93]" weight="bold" />
-          <input
-            type="text"
-            placeholder="Ask Meta AI or Search"
-            className="flex-1 bg-transparent text-[17px] text-black outline-none placeholder:text-[#8E8E93]"
-          />
+          <span className="flex-1 text-[17px] text-[#8E8E93]">
+            Search
+          </span>
         </div>
 
         {/* Filter Chips */}
